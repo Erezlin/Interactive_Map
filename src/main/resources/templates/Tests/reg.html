@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/htymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<header><nav role="navigation">
+    <ul>
+        <li sec:authorize="hasAuthority('ADMIN')"><a href="/add">Добавить товар</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/login">Войти</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/exit">Выйти</a></li>
+
+        <li><a th:href="@{|~/basket?username=${#authentication.name}|}">Корзина</a></li>
+        <li><a href="#">Все товары</a></li>
+    </ul>
+</nav></header>
+<body>
+<form action="/reg" method="POST">
+  <input type="text" name="username"/>
+  <input type="password" name="password"/>
+  <button type="submit">Зарегистрироваться</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Suez+One');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed');
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+a{
+    text-decoration:none;
+}
+.li {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+html {
+    width: 100%;
+
+    background-color: #B0E0E6;
+
+}
+html, body {
+    /* Убирает прокрутку по горизонтале, для мобильной версии */
+    overflow-x: hidden;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    font-family: monospace;
+    width: 100%;
+    background-color: aquamarine;
+    position: fixed;
+}
+
+ul {
+    background: darkorange;
+    list-style: none;
+    margin-top: 0px;
+}
+
+li {
+    color: #fff;
+    background: darkorange;
+    display: block;
+    float: right;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+li a {
+    color: #fff;
+}
+
+li:hover {
+    background: red;
+    cursor: pointer;
+}
+
+ul li ul {
+    background: orange;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+}
+
+.block{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item{
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    margin: 20px auto 20px auto;
+    padding: 15px 10px 15px 10px;
+    text-align: center;
+    box-shadow: 0 0 20px 10px rgba(221, 221, 221, 1);
+}
+.buttondiv{
+    align-content: center;
+    background-color: powderblue;
+    border-radius: 30px;
+    box-shadow: 0px 5px 8px 2px rgb(0 0 0);
+    margin: 5px 0px 5px 0px;
+}
+.buttondiv h3{
+    color: #000;
+}
+.price{
+    margin-top: auto;
+}
+img{
+    border-radius: 40px;
+}

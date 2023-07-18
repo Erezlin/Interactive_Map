@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/htymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=470, user-scalable=0">
+    <title>Добавить товар</title>
+    <link th:href="@{/css/add.css}" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav role="navigation">
+        <ul>
+            <li sec:authorize="hasAuthority('ADMIN')"><a href="/add">Добавить товар</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/login">Войти</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/exit">Выйти</a></li>
+
+            <li><a th:href="@{|~/basket?username=${#authentication.name}|}">Корзина</a></li>
+            <li><a href="#">Все товары</a></li>
+        </ul>
+    </nav>
+</header>
+<section>
+<div class="block">
+    <div class="addblock">
+        <iframe name="myframe" style="display:none;"></iframe>
+        <h5 th:text="${saves}"/>
+        <form id="form" method="post" action="/add" target="myframe">
+            <input type="text" name="catname" placeholder="Название категории" required>
+            <input type="text" name="name" placeholder="Название товара" required>
+            <input type="text" name="img" placeholder="Ссылка на изображение" required>
+            <input type="text" name="price" placeholder="Цена товара" required>
+            <textarea form="form" name="text" placeholder="Краткое описание товара" required></textarea>
+            <button><h1>Добавить товар</h1></button>
+
+        </form>
+
+    </div>
+
+</div>
+</section>
+
+</body>
+</html>

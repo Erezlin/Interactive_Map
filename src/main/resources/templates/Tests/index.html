@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/htymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=470, user-scalable=0">
+    <title>Все товары</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav role="navigation">
+        <ul>
+            <li sec:authorize="hasAuthority('ADMIN')"><a href="/add">Добавить товар</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/login">Войти</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/exit">Выйти</a></li>
+
+            <li><a th:href="@{|~/basket?username=${#authentication.name}|}" sec:authorize="hasAuthority('USER')">Корзина</a></li>
+            <li><a href="#">Все товары</a></li>
+        </ul>
+    </nav>
+</header>
+<section>
+    <div class="block">
+        <div class="item" th:each="el : ${prod}">
+            <h2 th:text="${el.film_name}"/>
+            <img th:src="${el.img_url}" width="200px" height="200px" >
+            <h2 th:text="${el.time_start}"/>
+            <h3 th:text="${el.time_exit}"/>
+
+            <div sec:authorize="!isAuthenticated()">
+                <div class="buttondiv"><a class="button" href="/login"><h3>Для покупки билета войдите</h3></a></div>
+
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <div class="buttondiv"><a class="button" th:href="@{|~/addbas?prodid=${el.id}|}"><h3>Купить билет</h3></a></div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+</body>
+</html>

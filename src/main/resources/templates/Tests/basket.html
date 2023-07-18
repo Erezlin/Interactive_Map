@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/htymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=470, user-scalable=0">
+    <title>NextRey</title>
+    <link th:href="@{/css/basket.css}" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&family=Raleway&display=swap');
+    </style>
+</head>
+<header>
+    <nav role="navigation">
+        <ul>
+            <li sec:authorize="hasAuthority('ADMIN')"><a href="/add">Добавить товар</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/login">Войти</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/exit">Выйти</a></li>
+
+            <li><a th:href="@{|~/basket?username=${#authentication.name}|}">Корзина</a></li>
+            <li><a href="http://localhost:8080">Все товары</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+<div class="basket">
+    <div class="element" th:each="el : ${basket}">
+        <div class="elconf"><img th:src="${el.img_url}" width="100px" height="100px"></div>
+        <div class="elconf"><h5 th:text="${el.film_name}"/></div>
+        <div class="elconf"><h5 th:text="${el.time_start}"/></div>
+        <div class="elconf"><h5 th:text="${el.time_exit}"/></div>
+
+    </div>
+
+
+</div>
+<div>
+    <div class="elconf"><h5 th:text="${price}"/></div>
+</div>
+</body>
+</html>>

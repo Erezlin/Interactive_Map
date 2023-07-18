@@ -1,0 +1,32 @@
+<div th:fragment="test_block">
+    <div>
+        <h2>TestBlock</h2>
+    </div>
+</div>
+
+<div th:fragment="navbar">
+    <nav class="navbar navbar-light navbar-expand-md py-3">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img th:src="@{/img/5ka_logo_rgb_02-e1663673744463-1024x406.png}" style="height: 35px;width: 157.75px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-2">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                </ul><a class="btn btn-primary ms-md-2" role="button" href="#" style="background: rgb(46,142,67);">Выйти</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<div th:fragment="navbarold">
+    <nav role="navigation">
+        <ul>
+            <li sec:authorize="hasAuthority('ADMIN')"><a href="/add">Добавить товар</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/login">Войти</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/exit">Выйти</a></li>
+
+            <li><a th:href="@{|~/basket?username=${#authentication.name}|}">Корзина</a></li>
+            <li><a href="#">Все товары</a></li>
+        </ul>
+    </nav>
+
+</div>
